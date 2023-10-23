@@ -11,9 +11,11 @@ import UserBackend from 'src/backends/UserBackend';
 export class WelcomePage implements OnInit {
 
   public user = {} as User;
+
+  public userBackend: any;
  
 
-  constructor(private toastCtrl: ToastController, private userBackend: UserBackend, private loadingCtrl: LoadingController ) {
+  constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController ) {
       
     this.userBackend = new UserBackend()
 
