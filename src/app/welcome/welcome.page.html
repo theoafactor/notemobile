@@ -1,0 +1,42 @@
+<ion-header [translucent]="true">
+  
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+   
+  </ion-header>
+
+
+  <div class="form-area">
+
+    <h1>NoteTaker!</h1>
+
+    <h4>Create Account</h4>
+    <ion-list>
+      <ion-item>
+        <ion-input type="text" label-placement="floating" label="First name" placeholder="First name" [(ngModel)]="user.firstname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="text" label-placement="floating" label="Last name" placeholder="Last name"[(ngModel)]="user.lastname"[(ngModel)]="user.lastname"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="email" label-placement="floating" label="Email address" placeholder="Your Email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" label-placement="floating" label="Password" placeholder="Your Password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" label-placement="floating" label="Confirm Password" placeholder="Your Password Again" [(ngModel)]="user.password_confirm"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button expand="block" (click)="createAccount(user)">Create Account</ion-button>
+
+  </div>
+</ion-content>
