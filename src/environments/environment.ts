@@ -10,7 +10,8 @@ export const environment = {
     projectId: "fixa-demo1",
     storageBucket: "fixa-demo1.appspot.com",
     messagingSenderId: "653742136793",
-    appId: "1:653742136793:web:f067f0ee3270cbb6accdc8"
+    appId: "1:653742136793:web:f067f0ee3270cbb6accdc8",
+    backendURL: ""
   }
 };
 
