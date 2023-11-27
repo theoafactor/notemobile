@@ -3,6 +3,12 @@ import { ToastController, LoadingController } from '@ionic/angular';
 import User from '../models/User/User.interface';
 import UserBackend from 'src/backends/UserBackend';
 
+// - import AngularFireAuth
+import { AngularFireAuth } from "@angular/fire/compat/auth";
+
+// bring in firebase email auth provider
+// import { EmailAuthProvider } from "firebase/auth";
+
 @Component({
   selector: 'app-welcome',
   templateUrl: './welcome.page.html',
@@ -15,7 +21,9 @@ export class WelcomePage implements OnInit {
   public userBackend: any;
  
 
-  constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController ) {
+  constructor(private toastCtrl: ToastController, private loadingCtrl: LoadingController,
+              private auth: AngularFireAuth
+    ) {
       
     this.userBackend = new UserBackend()
 
@@ -26,7 +34,7 @@ export class WelcomePage implements OnInit {
 
 
 
-  createAccount(user: User){
+  async createAccount(user: User){
 
 
 
@@ -42,10 +50,33 @@ export class WelcomePage implements OnInit {
     }
     else{
       // start the spinner
-      this.loadingCtrl.create({
+      let loader = await this.loadingCtrl.create({
         message: "Creating Account ...",
       })
-      this.userBackend.registerUserAccount(user)
+      // this.userBackend.registerUserAccount(user)
+
+
+
+      // console.log(EmailAuthProvider.credential(user.email, user.password));
+      loader.present();
+      this.auth.createUserWithEmailAndPassword(user.email, user.password).then(( user_data) => {
+
+        console.log("User created successfully!", user_data)
+
+        this.toastCtrl.create({
+          message: "User created successfully",
+          duration: 3000,
+          position: "top"
+        }).then(( toaster) => {
+          toaster.present();
+          loader.dismiss();
+
+          this.user = {} as User;
+        })
+
+        
+
+      });
 
     }
 
