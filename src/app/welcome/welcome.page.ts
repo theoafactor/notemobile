@@ -51,7 +51,7 @@ export class WelcomePage implements OnInit {
     else{
       // start the spinner
       let loader = await this.loadingCtrl.create({
-        message: "Creating Account ...",
+        message: "Creating Account ....",
       })
       // this.userBackend.registerUserAccount(user)
 
