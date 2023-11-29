@@ -93,6 +93,16 @@ export class WelcomePage implements OnInit {
             this.navCtl.navigateForward("/userlogin").then(() => {
 
             })
+          }).catch(async (error) => {
+              console.log(error);
+              let error_toaster = await this.toastCtrl.create({
+                message: `User could not be created: ${error}`, 
+                position: "top",
+                duration: 5000
+              });
+
+              error_toaster.present();
+
           })
 
      
