@@ -1,13 +1,36 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>userlogin</ion-title>
-  </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">userlogin</ion-title>
-    </ion-toolbar>
+   
   </ion-header>
+
+
+  <div class="form-area">
+
+    <h1>NoteTaker!</h1>
+
+    <h4 style="margin-top: 50px; text-align: center;">Log into your account</h4>
+    <ion-list>
+   
+      <ion-item>
+        <ion-input type="email" label-placement="floating" label="Email address" placeholder="Your Email" [(ngModel)]="user.email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-input type="password" label-placement="floating" label="Password" placeholder="Your Password" [(ngModel)]="user.password"></ion-input>
+      </ion-item>
+
+    </ion-list>
+
+    <ion-button expand="block" (click)="loginUser(user)">Log in</ion-button>
+
+    <div> -- or -- </div>
+
+    <ion-button expand="block" (click)="welcomePage()">Create Account</ion-button>
+
+  </div>
 </ion-content>
+

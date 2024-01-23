@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, ToastController, LoadingController } from '@ionic/angular';
+import { Camera, CameraResultType, CameraSource, CameraDirection } from '@capacitor/camera';
 
 @Component({
   selector: 'app-home',
@@ -9,6 +10,8 @@ import { NavController, ToastController, LoadingController } from '@ionic/angula
 export class HomePage {
 
   private loader: any;
+
+  public image_link: any;
 
   constructor(public navCtrl: NavController, private toastCtrl: ToastController, private loadingCtrl: LoadingController) {
 
@@ -21,6 +24,8 @@ export class HomePage {
 
       this.loader.present(); //start the loader
 
+
+      this.loader.dismiss()
     })
    
 
@@ -31,20 +36,19 @@ export class HomePage {
 
   async getStarted(){
 
-    const result = await this.navCtrl.navigateForward("welcome")
-    
-    if(result){
-      this.loader.dismiss();
-      const toaster = await this.toastCtrl.create({
-        message: "Welcome to Note Takr!",
-        duration: 3000,
-        position: "bottom"
+      const image = await Camera.getPhoto({
+        quality: 90, 
+        resultType: CameraResultType.Uri,
+        source: CameraSource.Camera,
+        direction: CameraDirection.Front
       })
 
-      toaster.present();
 
 
-    }
+      //save the image for previewing 
+      this.image_link = image.webPath;
+
+      console.log(this.image_link)
    
 
   }

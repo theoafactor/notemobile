@@ -124,4 +124,11 @@ export class WelcomePage implements OnInit {
 
   }
 
+
+  async loginPage(){
+
+    await this.navCtl.navigateRoot("/userlogin")
+
+  }
+
 }
